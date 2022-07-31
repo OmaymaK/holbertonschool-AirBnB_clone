@@ -22,5 +22,12 @@ class TestBaseModel(unittest.TestCase):
        dictt = model.to_dict()
        self.assertNotEqual(dictt, {})
 
+    def test_kwargss(self):
+        self.model1 = BaseModel()
+        self.model1_kwargs = self.model1.to_dict()
+        self.model2 = BaseModel(**self.model1_kwargs)
+        self.model2_kwargs = self.model2.to_dict()
+        self.assertEqual(self.model1_kwargs, self.model2_kwargs)
+
 if __name__ == '__main__':
     unittest.main()
